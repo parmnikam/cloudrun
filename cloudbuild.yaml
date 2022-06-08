@@ -1,12 +1,13 @@
 steps:
 # Build the container image
-- name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '.']
-  id: Building the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/sruthi-352112/gcr.io/sruthi-352112/github.com/sruthibande/cloudrun-cloudbuild-repo@sha256:5fe91fd0dd84fdeb9757331e7cdc7426540aef8264a3f9368373459e0781d42b', '.']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}']
-  id: Pushing the image to registry
+  args: ['push', 'gcr.io/sruthi-352112/gcr.io/sruthi-352112/github.com/sruthibande/cloudrun-cloudbuild-repo@sha256:5fe91fd0dd84fdeb9757331e7cdc7426540aef8264a3f9368373459e0781d42b']
 # Deploy container image to Cloud Run
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '--region', 'us-central1', '--platform', 'managed', "--allow-unauthenticated"]
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'cloudrun-cloudbuild-repo-00001-niy', '--image', 'gcr.io/sruthi-352112/gcr.io/sruthi-352112/github.com/sruthibande/cloudrun-cloudbuild-repo@sha256:5fe91fd0dd84fdeb9757331e7cdc7426540aef8264a3f9368373459e0781d42b', '--region', 'REGION']
+images:
+- gcr.io/sruthi-352112/gcr.io/sruthi-352112/github.com/sruthibande/cloudrun-cloudbuild-repo@sha256:5fe91fd0dd84fdeb9757331e7cdc7426540aef8264a3f9368373459e0781d42b
