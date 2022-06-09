@@ -11,6 +11,6 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   id: DEPLOY
   entrypoint: gcloud
-  args: ['run', 'deploy', 'cloudrun-cloudbuild-repo', '--image', 'gcr.io/sruthi-352112/5fe91fd0dd84', '--region', 'us-central1']
+  args: ['run', 'deploy', 'cloudrun-cloudbuild-service', '--image', 'gcr.io/sruthi-352112/5fe91fd0dd84', '--region', 'us-central1']
 images:
 - gcr.io/sruthi-352112/5fe91fd0dd84
